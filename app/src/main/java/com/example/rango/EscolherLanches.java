@@ -5,18 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class EscolherLanches extends AppCompatActivity {
+public class EscolherLanches extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escolher_lanches);
 
-        ArrayList<Item> lista = new ArrayList<Item>();
+        final ArrayList<Item> lista = new ArrayList<Item>();
 
         Item a = new Item(R.drawable.xbacon,"X-Bacon","$:13,99");
         Item b = new Item(R.drawable.xsalada,"X-Salada","$:12,99");
@@ -37,15 +39,24 @@ public class EscolherLanches extends AppCompatActivity {
         lista.add(g);
         lista.add(h);
 
-        ListaAdapterItem adapterItem = new ListaAdapterItem(this,lista);
+        final ListaAdapterItem adapterItem = new ListaAdapterItem(this,lista);
 
         ListView listView = (ListView)findViewById(R.id.ListView);
 
         listView.setAdapter(adapterItem);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(),"Nome: "+lista.get(position).toString(),Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void Pagar(View view){
         Intent intent = new Intent(this,FazerPagamento.class);
         startActivity(intent);
     }
+
+
 }

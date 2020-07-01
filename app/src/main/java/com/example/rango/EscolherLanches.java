@@ -23,7 +23,6 @@ public class EscolherLanches extends AppCompatActivity{
         Item a = new Item(R.drawable.xbacon,"X-Bacon","$:13,99");
         Item b = new Item(R.drawable.xsalada,"X-Salada","$:12,99");
         Item c = new Item(R.drawable.cachorroquente,"Cachorro - Quente","$:15,99");
-        Item d = new Item(R.drawable.xcalabresa,"XCalabresa","$:13,99");
         Item e = new Item(R.drawable.xcatupiry,"X-Catupiru","$:16,00");
         Item f = new Item(R.drawable.combo,"Combo","$:25,00");
         Item g = new Item(R.drawable.xtudo,"X-Tudo","$:20,00");
@@ -33,7 +32,6 @@ public class EscolherLanches extends AppCompatActivity{
         lista.add(a);
         lista.add(b);
         lista.add(c);
-        lista.add(d);
         lista.add(e);
         lista.add(f);
         lista.add(g);
@@ -48,7 +46,7 @@ public class EscolherLanches extends AppCompatActivity{
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(),"Nome: "+lista.get(position).toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Lanche: "+lista.get(position).getNome().toString(),Toast.LENGTH_SHORT).show();
             }
         });
     }
